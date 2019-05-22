@@ -1,6 +1,8 @@
-EnviroDIY XBee Adapter
+EnviroDIY LTE Bee Adapter
 ==============
-The EnviroDIY XBee Adapter shield is an interface board designed to enhance the functioning and stability of a wide array of XBee-footprint radio modules whe used with micro-controller boards, such as the [EnviroDIY Mayfly Logger versions <0.5b](https://github.com/EnviroDIY/EnviroDIY_Mayfly_Logger), that might not have all the power capabilities required by modern radios.
+The EnviroDIY LTE Bee Adapter shield is an interface board designed to enhance the functioning and stability of the [Digi XBee3 Cellular LTE-M/NB-IoT](https://www.digi.com/products/embedded-systems/cellular-modems/xbee3-cellular-lte-m-nb-iot) radio modules with the [EnviroDIY Mayfly Logger versions <0.5b](https://github.com/EnviroDIY/EnviroDIY_Mayfly_Logger).
+
+MORE INFORMATION COMING SOON.
 
 
 ## License
