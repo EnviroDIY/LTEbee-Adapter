@@ -6,6 +6,8 @@ The two main benefits of the LTE adapter board are:
 - additional features for power supply, stability and switching
 - status LED lights 
 
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_r1_top.JPG"  height="200"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_r1_side.JPG"  height="200"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee%2BMayfly.jpeg"  height="200"> |
+
 The power benefits are provided via a direct JST connector to the battery, similar to Sodaq GPRSbee modules, and a capacitor chain. Power is thus much smoother, and the XBee module should not brown out and stop communicating.  Use a JST jumper wire to connect the LTEbee adapter board to the spare LIPO jack on the Mayfly board.
 
 There are 3 colored LEDs on the LTEbee adapter.  The ON light (white) comes on anytime the LTEbee is awake.  The STATUS light (blue) is connected to the ASSOC pin of the bee module, and will blink different patterns to show the connection status to the network.  The RSSI (orange) light is the received signal strength indicator.  It will vary in brightness depending on signal strength. 
