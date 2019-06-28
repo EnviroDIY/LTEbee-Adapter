@@ -6,16 +6,14 @@ The two main benefits of the LTE adapter board are:
 - additional features for power supply, stability and switching
 - status LED lights 
 
-| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_r1_top.JPG"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_r1_side.JPG"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee%2BMayfly.jpeg"  height="240"> |
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_front_top.jpg"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_right2.jpg"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee%2BMayfly.jpeg"  height="240"> |
 
 The power benefits are provided via a direct JST connector to the battery, similar to Sodaq GPRSbee modules, and a capacitor chain. Power is thus much smoother, and the XBee module should not brown out and stop communicating.  Use a JST jumper wire to connect the LTEbee adapter board to the spare LIPO jack on the Mayfly board.
 
-There are 3 colored LEDs on the LTEbee adapter.  The ON light (white) comes on anytime the LTEbee is awake.  The STATUS light (blue) is connected to the ASSOC pin of the bee module, and will blink different patterns to show the connection status to the network.  The RSSI (orange) light is the received signal strength indicator.  It will vary in brightness depending on signal strength. 
+There are 3 colored LEDs on the LTEbee adapter.  The ON light (white) comes on anytime the LTEbee is awake.  The ASSOC light (blue) is connected to the ASSOC pin of the bee module, and will blink different patterns to show the connection status to the network.  The RSSI (orange) light is the received signal strength indicator.  It will vary in brightness depending on signal strength. 
 
 If using a Mayfly v0.5b, you'll want to make sure that the SJ13 solder jumper is in the configuration where pin 1 of the 
-Mayfly bee header is powered by the 3.3Vcc and not directly to the LiPo (this is the default jumper setting).  This way, the Mayfly's bee socket only gets power whenever the Mayfly is turned on, and the LTEbee module doesn't wake up when the Mayfly is off (which is what it does if the LiPo is directly connected to pin 1 via SJ13).  
-
-You can then control the LTEbee module's sleep behavior with the module's pin 9 sleep pin (using Mayfly D23) similar to what we do with the Sodaq GPRSbee radio modules.   
+Mayfly bee header is powered by the 3.3Vcc and not directly to the LiPo (this is the default jumper setting).  This way, the Mayfly's bee socket only gets power whenever the Mayfly is turned on, and the LTEbee module doesn't wake up when the Mayfly is off (which is what it does if the LiPo is directly connected to bee pin 1 via SJ13).  You can then control the LTEbee module's sleep behavior with the module's pin 9 sleep pin (using Mayfly D23).
 
 We also have access to the LTE module's reset pin now. If using the Mayfly and the ModularSensors library, the user can set the reset pin to Mayfly pin 20 in the constructor for the modem in the code sketch. Currently the only time that feature is used, though, is in transparent mode if it doesn’t reply after 4 attempts to enter command mode.  In watching the debugging logs, we haven’t seen it use that reset yet. 
 
