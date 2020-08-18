@@ -8,11 +8,17 @@ The two main benefits of the LTE adapter board are:
 - additional features for power supply, stability and switching
 - status LED lights 
 
-| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_front_top.jpg"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_right2.jpg"  height="240"> | <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee%2BMayfly.jpeg"  height="240"> |
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_front_top.jpg"  height="240"> 
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_back_top.jpg"  height="240"> 
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee_adapter_right2.jpg"  height="240"> 
+| <img src="https://github.com/EnviroDIY/LTEbee-Adapter/blob/master/doc/images/LTEbee%2BMayfly.jpeg"  height="240"> |
 
 The power benefits are provided via a direct JST connector to the battery, similar to Sodaq GPRSbee modules, and a capacitor chain. Power is thus much smoother, and the XBee module should not brown out and stop communicating.  Use a JST jumper wire to connect the LTEbee adapter board to the spare LIPO jack on the Mayfly board.
 
-There are 3 colored LEDs on the LTEbee adapter.  The ON light (white) comes on anytime the LTEbee is awake.  The ASSOC light (blue) is connected to the ASSOC pin of the bee module, and will blink different patterns to show the connection status to the network.  The RSSI (orange) light is the received signal strength indicator.  It will vary in brightness depending on signal strength. 
+There are 3 colored LEDs on the LTEbee adapter.
+- ON (white) light comes on anytime the LTEbee is awake.
+- ASSOC (blue) light is connected to the ASSOC pin of the bee module, and will blink different patterns to show the connection status to the network.
+- RSSI (orange) light is the received signal strength indicator.  It will turn on when connecting with the network vary in brightness depending on signal strength. 
 
 DO NOT UNPLUG the LTEbee Adapter board while any of the lights are on, as this might permanently lockup your Digi radio module. Powering down the Mayfly should put set the LTEbee Adapter to put the radio into sleep mode, and this might take a minute or so after turning the Mayfly off. 
 
@@ -21,9 +27,15 @@ Mayfly bee header is powered by the 3.3Vcc and not directly to the LiPo (this is
 
 We also have access to the LTE module's reset pin now. If using the Mayfly and the ModularSensors library, the user can set the reset pin to Mayfly pin 20 in the constructor for the modem in the code sketch. Currently the only time that feature is used, though, is in transparent mode if it doesn’t reply after 4 attempts to enter command mode.  In watching the debugging logs, we haven’t seen it use that reset yet. 
 
-The LTE Bee Adapter shield also has a solder jumper (SJ1) for selecting how you power the load switch for the Vcc pin of the module.  The default setting is that the LTE module is always powered when the Mayfly bee socket Vcc pin (pin 1) is on (as mentioned above).   But if you switch the jumper to the other position, it allows you to turn on and off the power to the LTEbee by using pin 15 of the Mayfly bee socket, which goes to the Mayfly's SJ7 solder jumper.  Mayfly SJ7 was originally designed to allow you to connect Mayfly pin A5 to either the RingIndicator pin (Bee 20) or the Assoc pin (Bee 15).  So if you jumper Mayfly SJ7 between the A5 and ASSOC pads, you are then connecting A5 to the Mayfly bee socket pin 15, which goes to SJ1 on the LTEbee_adapter, allowing you to turn on or off the LTEbee by setting A5 high or low.  We aren't sure anyone would want to do that -- since Digi recommends leaving power to the LTEbee on all the time and then command it to sleep using the sleep pin (Bee 9), rather than yanking power away from it whenever you want to turn it off -- but we added this feature to give us flexiblity in the future.
+The LTEbee Adapter shield also has two a solder jumper's on the back, giving the user configuration options.
 
-Solder jumper SJ2 on the LTEbee adapter is for selecting which pin on the Bee modules gets connected to Mayfly D19 (Mayfly bee header pin 12).  The default setting is for the LTEBee module's pin 13 to be connected to Mayfly D19, which is how this adapter should always be used with a Digi LTEbee, but changing SJ2 to the other setting will connect pin 12 of the bee module to D19.  This was done in case other manufacturers use the same pinout as the GPRSbee boards, which are different than the Digi LTEbee.
+The LTEbee Adapter's **SJ1 solder jumper** allows the user to select how to power the load switch for the Vcc pin of the module.  
+- The default setting is that the LTE module is always powered when the Mayfly bee socket Vcc pin (pin 1) is on (as mentioned above).
+- If you switch the jumper to the other position (Mayfly A5), it allows you to turn on and off the power to the LTEbee by using pin 15 of the Mayfly bee socket, which goes to the Mayfly's SJ7 solder jumper:  
+  - [Mayfly SJ7](https://github.com/EnviroDIY/EnviroDIY_Mayfly_Logger#solder-jumper-connections) was originally designed to allow you to connect Mayfly pin A5 to either the RingIndicator pin (Bee 20) or the Assoc pin (Bee 15). The default is not connected to either (all pads open).
+  - If you solder the Mayfly SJ7 jumper between the A5 and ASSOC pads, you are then connecting A5 to the Mayfly bee socket pin 15, which goes to SJ1 on the LTEbee_adapter, allowing you to turn on or off the LTEbee by setting A5 high or low.  We aren't sure anyone would want to do that -- since Digi recommends leaving power to the LTEbee on all the time and then command it to sleep using the sleep pin (Bee 9), rather than yanking power away from it whenever you want to turn it off -- but we added this feature to give us flexiblity in the future.
+
+The LTEbee Adapter's **SJ2 solder jumper** is for selecting which pin on the Bee modules gets connected to Mayfly D19 (Mayfly bee header pin 12).  The default setting is for the LTEBee module's pin 13 to be connected to Mayfly D19, which is how this adapter should always be used with a Digi LTEbee, but changing SJ2 to the other setting will connect pin 12 of the bee module to D19.  This was done in case other manufacturers use the same pinout as the GPRSbee boards, which are different than the Digi LTEbee.
 
 
 ## License
